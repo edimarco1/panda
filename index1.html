@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Basic Website Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+  /* Basic styles for the layout */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background: slategray;
+    color: #fff;
+    padding: 10px;
+    border: 0px solid black;
+  }
+
+  .logo {
+    float: left;
+  }
+
+  .top-nav {
+    position: relative;
+  }
+
+.sub-menu {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  position: absolute;
+  top: 11%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+  .sub-menu-text {
+    text-align: left;
+    padding-left: 10px;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-content ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .dropdown-content ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .top-nav ul li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .top-nav ul li:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+      
+  .top-nav ul li:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    text-decoration: none;
+  }
+
+  .dropdown-item i {
+    margin-right: 5px;
+  }
+
+.left-menu {
+  background: #f4f4f4;
+  position: absolute;
+  left: 0;
+  top: calc(11% + 30px); /* Adjust the top value as needed */
+  width: 200px;
+  bottom: 0;
+  padding: 10px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+  .left-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .left-menu ul li {
+    margin-bottom: 5px;
+  }
+
+  .left-menu ul li a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+  }
+
+.content {
+  margin-left: 200px;
+  margin-top: 20px; /* Adjust the top value as needed */
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #e8f0f8;
+  min-height: 100vh;
+}
+
+  .content-box {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30%;
+  }
+
+  .content-box.left {
+    margin-right: 20px;
+  }
+
+  .content-box.center {
+    width: 60%;
+  }
+
+  .content-box-header {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .content-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .content-box ul li {
+    margin-bottom: 5px;
+  }
+
+  .content-box ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  @media screen and (max-width: 768px) {
+    .content-box {
+      width: 80%;
+    }
+  }
+</style> </head>
+  <body>
+    <header>
+      <div class="logo"> <a href="#"><img src="eMASS%20Simulator2.png" alt="Logo"></a>
+      </div>
+      <nav class="top-nav" style="height: 57px;">
+        <ul>
+          <li class="dropdown" style="height: 54px;"> <a href="#">Home</a>
+            <div class="dropdown-content"> Home Workload Notifications </div>
+          </li>
+          <li class="dropdown" style="height: 31px; margin-top: 11px;"> <a href="#">Authorization</a>
+            <div class="dropdown-content"> Sample Authorization 1 Sample
+              Authorization 2 Sample Authorization 3 </div>
+          </li>
+          <li class="dropdown"> <a href="#">Reports</a>
+            <div class="dropdown-content"> <span class="dropdown-item" style="color: #333;">Sample
+                Report 1</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 2</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 3</span> </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="sub-menu" style="top: 94px; height: 16px; left: -6px; width: 1732px;">
+      <p class="sub-menu-text">Hello, Welcome to eMASS Simulator.</p>
+    </div>
+    <div class="left-menu" style="top: 130px; height: 789px; left: 0px;">
+      <ul>
+        <li><a href="#">Register System</a></li>
+        <li><a href="systems.html">Search Systems</a></li>
+        <li><span style="color: #333333;">&nbsp;System Import</span></li>
+        <li><a href="#blank" target="_top">Knowledge-base</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="content-box left">
+        <div class="content-box-header">
+          <h3>Home</h3>
+        </div>
+        <ul>
+          <li><a href="#">Release Notes</a></li>
+          <li><a href="#">Version</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="content-box center">
+        <div class="content-box-header">
+          <h3>Announcements</h3>
+        </div>
+        <ul>
+          <li>
+            <h4 class="announcement-title">Important Announcement</h4>
+            <p class="announcement-description">We are excited to announce the
+              release of the latest version of eMASS Simulator, featuring
+              enhanced security and improved performance. Upgrade now to benefit
+              from the new features and optimizations.</p>
+            <span class="timestamp">June 15, 2023 - 10:30 AM</span> </li>
+          <li>
+            <h4 class="announcement-title">Scheduled Maintenance</h4>
+            <p class="announcement-description">To ensure the highest level of
+              service, we will be performing scheduled maintenance on the eMASS
+              Simulator servers. During this time, access to the system may be
+              temporarily unavailable. We apologize for any inconvenience
+              caused.</p>
+            <span class="timestamp">June 14, 2023 - 02:45 PM</span> </li>
+          <li>
+            <h4 class="announcement-title">Upcoming Training Webinar</h4>
+            <p class="announcement-description">Join us for an interactive
+              training webinar on advanced usage of the eMASS Simulator. Learn
+              valuable tips and techniques from our experts to optimize your
+              workflow and maximize productivity. Save the date!</p>
+            <span class="timestamp">June 13, 2023 - 08:15 AM</span> </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
