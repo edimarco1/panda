@@ -6,36 +6,33 @@ var certificates = [
   { id: 3, name: "Certificate 3" }
 ];
 
-// Create a prompt to select a certificate
-var certificatePrompt = "Please select your certificate:\n";
+// Create a certificate selection dialog
+var certificatePrompt = "Please select your certificate:";
 certificates.forEach(function (cert) {
-  certificatePrompt += cert.id + ". " + cert.name + "\n";
+  certificatePrompt += "\n\n" + cert.id + ". " + cert.name;
 });
-certificatePrompt += "Enter the certificate number or click Cancel to exit.";
 
-// Display the certificate selection prompt
-var certificateChoice = window.prompt(certificatePrompt);
-
-// Check if the user selected a certificate
-if (certificateChoice !== null) {
-  // Find the selected certificate by its ID
-  var selectedCertificate = certificates.find(function (cert) {
-    return cert.id === parseInt(certificateChoice);
-  });
-
-  if (selectedCertificate) {
-    // Display the PIN input prompt
-    var pin = window.prompt("Please enter your PIN:", "");
-
-    // Proceed with the demonstration
-    console.log("Certificate: " + selectedCertificate.name);
-    console.log("PIN: " + pin);
-    // You can perform additional actions or logic here based on the selected certificate and PIN
-  } else {
-    console.log("Invalid certificate selection");
+// Display the certificate selection dialog
+var selectedCertificate = null;
+certificates.forEach(function (cert) {
+  var confirmation = window.confirm(certificatePrompt + "\n\n" + cert.name);
+  if (confirmation) {
+    selectedCertificate = cert;
   }
+});
+
+// Check if a certificate was selected
+if (selectedCertificate) {
+  // Display the PIN input prompt
+  var pin = window.prompt("Please enter your PIN:", "");
+
+  // Proceed with the demonstration
+  console.log("Certificate: " + selectedCertificate.name);
+  console.log("PIN: " + pin);
+  // You can perform additional actions or logic here based on the selected certificate and PIN
 } else {
   console.log("Certificate selection canceled");
 }
+
 
 });
