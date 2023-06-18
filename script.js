@@ -1,38 +1,30 @@
 document.addEventListener("DOMContentLoaded", function() {
-// Define an array of fake certificates
-var certificates = [
-  { id: 1, name: "Certificate 1" },
-  { id: 2, name: "Certificate 2" },
-  { id: 3, name: "Certificate 3" }
-];
-
-// Create a certificate selection dialog
+// Display the certificate selection prompt
 var certificatePrompt = "Please select your certificate:";
-certificates.forEach(function (cert) {
-  certificatePrompt += "\n\n" + cert.id + ". " + cert.name;
-});
+var certificateChoice = window.confirm(certificatePrompt);
 
-// Display the certificate selection dialog
-var selectedCertificate = null;
-certificates.forEach(function (cert) {
-  var confirmation = window.confirm(certificatePrompt + "\n\n" + cert.name);
-  if (confirmation) {
-    selectedCertificate = cert;
-  }
-});
-
-// Check if a certificate was selected
-if (selectedCertificate) {
+// Check if the user selected a certificate
+if (certificateChoice) {
   // Display the PIN input prompt
-  var pin = window.prompt("Please enter your PIN:", "");
+  var pin = prompt("Please enter your PIN:", "");
 
-  // Proceed with the demonstration
-  console.log("Certificate: " + selectedCertificate.name);
-  console.log("PIN: " + pin);
-  // You can perform additional actions or logic here based on the selected certificate and PIN
+  // Check if the user entered a PIN
+  if (pin !== null) {
+    // Proceed with the demonstration
+    console.log("Certificate selected");
+    console.log("PIN: " + pin);
+    // You can perform additional actions or logic here based on the selected certificate and PIN
+  } else {
+    // User canceled PIN input
+    console.log("PIN input canceled");
+    document.body.innerHTML = ""; // Clear the page content
+  }
 } else {
+  // User canceled certificate selection
   console.log("Certificate selection canceled");
+  document.body.innerHTML = ""; // Clear the page content
 }
+
 
 
 });
