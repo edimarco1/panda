@@ -503,10 +503,44 @@
       return labelElement;
     }
 
+
+    // Function to generate a unique key
+    function generateUniqueKey() {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+      
     // Event listener for save button
     saveButton.addEventListener("click", () => {
-      alert("Save Completed!"); // Placeholder for save functionality
+      const timestamp = new Date().toISOString();
+      const uniqueKey = generateUniqueKey();
+      const successValue = "success";
+
+      const requestData = {
+        key: uniqueKey,
+        timestamp: timestamp,
+        status: successValue
+      };
+      
+  // Make an API POST request to the Appian API
+  fetch("https://api.example.com/save-data", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestData)
+  })
+    .then(response => {
+      if (response.ok) {
+        alert("Save Completed!");
+      } else {
+        throw new Error("Error saving data. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
     });
+});
+
 
     // Populate known information types in datalist
     const informationTypesDatalist = document.getElementById("information-types");
