@@ -275,7 +275,7 @@ h1, h2 {
 .overlay-table th {
   text-align: left;
   font-weight: bold;
-  background: none; /* No background for headers */
+  background: white; /* No background for headers */
 }
 
 .overlay-table td, .overlay-table th {
