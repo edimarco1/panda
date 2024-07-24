@@ -106,10 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
     <!-- Info Type Selector -->
-    
-    <script>
-    // Known information types array
-    const knownInformationTypes = [
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Known information types array
+  const knownInformationTypes = [
       'Privacy',
       'Strategic National & Theater Defense',
       'Operational Defense',
@@ -289,111 +290,158 @@ document.addEventListener('DOMContentLoaded', function() {
       'Information Management',
       'System and Network Monitoring',
       'Information Sharing'
-    ];
+  ];
 
-    const informationTypeInput = document.getElementById("information-type-input");
-    const searchButton = document.getElementById("search-button");
-    const selectedInformationTypes = document.getElementById("selected-information-types");
-    const saveButton = document.getElementById("save-button");
+  const searchButton = document.getElementById('search-button');
+  const informationTypeInput = document.getElementById('information-type-input');
+  const selectedInformationTypes = document.getElementById('selected-information-types');
+  const saveButton = document.getElementById('saveButton');
+  const cancelButton = document.getElementById('cancelButton');
+  const modal = document.getElementById('customModal');
+  const closeModal = document.getElementById('closeModal');
 
-    // Event listener for search button
-    searchButton.addEventListener("click", () => {
-      const inputText = informationTypeInput.value.trim();
+  // Populate datalist with known information types
+  const datalist = document.getElementById('information-types');
+  knownInformationTypes.forEach(type => {
+    const option = document.createElement('option');
+    option.value = type;
+    datalist.appendChild(option);
+  });
 
-      if (inputText && knownInformationTypes.includes(inputText)) {
-        addInformationType(inputText);
-        informationTypeInput.value = "";
-      } else {
-        alert("Please enter a valid known information type.");
-      }
+  // Search button click event
+  searchButton.addEventListener('click', function() {
+    const inputText = informationTypeInput.value.trim();
+    if (inputText && knownInformationTypes.includes(inputText)) {
+      addInformationType(inputText);
+      informationTypeInput.value = '';
+    } else {
+      alert('Please enter a valid known information type.');
+    }
+  });
+
+  // Enter key press event on input field
+  informationTypeInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      searchButton.click();
+    }
+  });
+
+  // Function to add information type
+  function addInformationType(type) {
+    const informationTypeItem = document.createElement('div');
+    informationTypeItem.classList.add('information-type-item');
+
+    const title = document.createElement('h4');
+    title.textContent = type;
+    informationTypeItem.appendChild(title);
+
+    const confidentialityDropdown = createDropdown('Confidentiality');
+    const integrityDropdown = createDropdown('Integrity');
+    const availabilityDropdown = createDropdown('Availability');
+
+    informationTypeItem.appendChild(confidentialityDropdown);
+    informationTypeItem.appendChild(integrityDropdown);
+    informationTypeItem.appendChild(availabilityDropdown);
+
+    selectedInformationTypes.appendChild(informationTypeItem);
+  }
+
+  // Function to create dropdown element
+  function createDropdown(label) {
+    const dropdown = document.createElement('select');
+    dropdown.name = label.toLowerCase();
+    dropdown.classList.add('dropdown');
+
+    const options = ['Low', 'Moderate', 'High'];
+
+    options.forEach((option) => {
+      const optionElement = document.createElement('option');
+      optionElement.value = option;
+      optionElement.textContent = option;
+      dropdown.appendChild(optionElement);
     });
 
-    // Event listener for Enter key press on input field
-    informationTypeInput.addEventListener("keyup", (event) => {
-      if (event.key === "Enter") {
-        searchButton.click();
-      }
-    });
+    const labelElement = document.createElement('label');
+    labelElement.textContent = label + ': ';
+    labelElement.appendChild(dropdown);
 
-    // Function to add information type to selected list
-    function addInformationType(type) {
-      const informationTypeItem = document.createElement("div");
-      informationTypeItem.classList.add("information-type-item");
+    return labelElement;
+  }
 
-      const title = document.createElement("h4");
-      title.textContent = type;
-      informationTypeItem.appendChild(title);
+  // Function to generate a unique key
+  function generateUniqueKey() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
 
-      const confidentialityDropdown = createDropdown("Confidentiality");
-      const integrityDropdown = createDropdown("Integrity");
-      const availabilityDropdown = createDropdown("Availability");
+  // Save button click event
+  saveButton.addEventListener('click', function() {
+    const timestamp = new Date().toISOString();
+    const uniqueKey = generateUniqueKey();
+    const successValue = 'success';
 
-      informationTypeItem.appendChild(confidentialityDropdown);
-      informationTypeItem.appendChild(integrityDropdown);
-      informationTypeItem.appendChild(availabilityDropdown);
+    const requestData = {
+      key: uniqueKey,
+      timestamp: timestamp,
+      status: successValue
+    };
 
-      selectedInformationTypes.appendChild(informationTypeItem);
-    }
+    saveButton.disabled = true;
+    saveButton.textContent = 'Saving...';
 
-    // Function to create dropdown element
-    function createDropdown(label) {
-      const dropdown = document.createElement("select");
-      dropdown.name = label.toLowerCase();
-      dropdown.classList.add("dropdown");
-
-      const options = ["Low", "Moderate", "High"];
-
-      options.forEach((option) => {
-        const optionElement = document.createElement("option");
-        optionElement.value = option;
-        optionElement.textContent = option;
-        dropdown.appendChild(optionElement);
-      });
-
-      const labelElement = document.createElement("label");
-      labelElement.textContent = label;
-      labelElement.appendChild(dropdown);
-
-      return labelElement;
-    }
-
-
-    // Function to generate a unique key
-    function generateUniqueKey() {
-      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    }
+    // Simulating API call
+    setTimeout(function() {
+      saveButton.disabled = false;
+      saveButton.textContent = 'Save';
       
-    // Event listener for save button
-    saveButton.addEventListener("click", () => {
-      const timestamp = new Date().toISOString();
-      const uniqueKey = generateUniqueKey();
-      const successValue = "success";
+      // Show the custom modal
+      modal.style.display = 'block';
+    }, 1000);
 
-      const requestData = {
-        key: uniqueKey,
-        timestamp: timestamp,
-        status: successValue
-      };
-      
-  // Make an API POST request to the Appian API
-  fetch("https://api.example.com/save-data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(requestData)
-  })
-    .then(response => {
-      if (response.ok) {
-        alert("Save Completed!");
-      } else {
-        throw new Error("Error saving data. Please try again.");
-      }
+    // Uncomment below to make an actual API call
+    /*
+    fetch('https://api.example.com/save-data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
     })
-    .catch(error => {
-      console.error(error);
-    });
+      .then(response => {
+        if (response.ok) {
+          modal.style.display = 'block';
+        } else {
+          throw new Error('Error saving data. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        alert(error.message);
+      })
+      .finally(() => {
+        saveButton.disabled = false;
+        saveButton.textContent = 'Save';
+      });
+    */
+  });
+
+  // Cancel button click event
+  cancelButton.addEventListener('click', function() {
+    // Clear selected information types
+    selectedInformationTypes.innerHTML = '';
+  });
+
+  // Close modal events
+  closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
 });
+</script>
 
 
     // Populate known information types in datalist
