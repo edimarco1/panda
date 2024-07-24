@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Basic Website Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo"> <a href="#"><img src="eMASS%20Simulator2.png" alt="Logo"></a>
+      </div>
+      <nav class="top-nav" style="height: 57px;">
+        <ul>
+          <li class="dropdown" style="height: 54px;"> <a href="#">Home</a>
+            <div class="dropdown-content"> Home Workload Notifications </div>
+          </li>
+          <li class="dropdown" style="height: 31px; margin-top: 11px;"> <a href="#">Authorization</a>
+            <div class="dropdown-content"> Sample Authorization 1 Sample
+              Authorization 2 Sample Authorization 3 </div>
+          </li>
+          <li class="dropdown"> <a href="#">Reports</a>
+            <div class="dropdown-content"> <span class="dropdown-item" style="color: #333;">Sample
+                Report 1</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 2</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 3</span> </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="sub-menu" style="top: 94px; height: 19px; left: -6px; width: 1745px;">
+      <p class="sub-menu-text">Hello, Welcome to eMASS Simulator.</p>
+    </div>
+    <div class="left-menu" style="top: 130px; height: 789px; left: 0px;">
+      <ul>
+        <li><a href="#">System Details</a></li>
+        <li><span style="color: #333333;">&nbsp;Dashboard</span></li>
+        <li><a href="categorization.html"><span style="color: #333333;">Categorization</span></a></li>
+        <li><span style=" color: #333333;">&nbsp;Controls</span></li>
+        <li><span style="  color: #333333;">&nbsp;Assets<br>
+          </span></li>
+        <li><a href="#blank" target="_top">Knowledge-base</a></li>
+      </ul>
+    </div>
+    <div class="content">
+  <div class="content-box tertiary-menu">
+    <div class="content-box-header">
+      <h3>Sections</h3>
+    </div>
+    <ul>
+      <li><a href="#">Control Selection</a></li>
+      <li><a href="#">Overlays</a></li>
+      <li><a href="#">STIGs</a></li>
+      <li><a href="#">Manage Security Controls</a></li>
+    </ul>
+  </div>
+  <div class="content-box main-content">
+    <div class="content-box-header">
+      <h1>Primary Security Control Set</h1>
+    </div>
+    <hr class="light-gray-divider">
+    <div class="two-column-layout">
+      <div class="column">
+        <span class="required-icon">*</span> Primary Security Control Set:
+      </div>
+      <div class="column">
+        <select name="primary-security-control-set">
+          <option value="nist-sp-800-53-rev-4">NIST SP 800-53 Revision 4</option>
+        </select>
+      </div>
+    </div>
+    <hr class="light-gray-divider">
+    <h2>Control Attributes:</h2>
+    <div class="two-column-layout">
+      <div class="column">
+        <span class="required-icon">*</span> Confidentiality:
+      </div>
+      <div class="column">
+        <select name="confidentiality">
+          <option value="high">High</option>
+          <option value="moderate">Moderate</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+    <div class="two-column-layout">
+      <div class="column">
+        <span class="required-icon">*</span> Integrity:
+      </div>
+      <div class="column">
+        <select name="integrity">
+          <option value="high">High</option>
+          <option value="moderate">Moderate</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+    <div class="two-column-layout">
+      <div class="column">
+        <span class="required-icon">*</span> Availability:
+      </div>
+      <div class="column">
+        <select name="availability">
+          <option value="high">High</option>
+          <option value="moderate">Moderate</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+    <hr class="light-gray-divider">
+    <div class="two-column-layout">
+      <div class="column">
+        <span class="required-icon">*</span> Impact:
+      </div>
+      <div class="column">
+        <select name="impact">
+          <option value="high">High</option>
+          <option value="moderate">Moderate</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+    </div>
+    <div class="button-container">
+    <button class="rounded-button save-button">Save</button>
+    <button class="rounded-button cancel-button">Cancel</button>
+  </div>
+</div>
+  </body>
+</html>
