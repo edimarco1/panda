@@ -5,6 +5,27 @@
     <title>Basic Website Layout</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const table = document.querySelector('.overlay-table tbody');
+      table.addEventListener('click', function(e) {
+        const target = e.target;
+        if (target.classList.contains('status')) {
+          if (target.textContent.trim() === 'Applied') {
+            target.innerHTML = 'Not Applied';
+            target.classList.remove('applied');
+            target.classList.add('not-applied');
+          } else if (target.textContent.trim() === 'Not Applied') {
+            target.innerHTML = '<i class="fas fa-check-circle"></i> Applied';
+            target.classList.remove('not-applied');
+            target.classList.add('applied');
+          }
+        }
+      });
+    });
+  </script>
+    
   </head>
   <body>
     <header>
