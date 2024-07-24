@@ -266,3 +266,35 @@ h1, h2 {
 #search-button {
   width: 80px;
 }
+
+.overlay-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.overlay-table th {
+  text-align: left;
+  font-weight: bold;
+  background: none; /* No background for headers */
+}
+
+.overlay-table td, .overlay-table th {
+  padding: 8px;
+  background-color: #f2f2f2; /* Gray background for cells */
+}
+
+.overlay-table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.overlay-table .status.applied i {
+  color: green;
+}
+
+.overlay-table .status.not-applied {
+  color: gray;
+}
+
+.overlay-table tbody tr {
+  border-bottom: 1px solid #ddd; /* Row dividers */
+}
