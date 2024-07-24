@@ -46,32 +46,28 @@
     
 <div class="content">
   <div class="content-box main-content">
+    <div class="content-box-header">
+      <h1>Information Type Search</h1>
+    </div>
+    <hr class="light-gray-divider">
     <div class="two-column-layout">
-      <!-- Left Column -->
-      <div class="column left-column">
-        <div class="content-box-header">
-          <h1>Information Type Search</h1>
-        </div>
-        <hr class="light-gray-divider">
-        <div>
-          <label for="information-type-input">Search Information Types:</label>
-          <input id="information-type-input" list="information-types" type="text">
-          <datalist id="information-types">
-            <!-- Add known information types here -->
-          </datalist>
-          <button id="search-button" class="rounded-button">Search</button>
-        </div>
+      <div class="column">
+        <label for="information-type-input">Search Information Types:</label>
       </div>
-      
-      <!-- Right Column -->
-      <div class="column right-column">
-        <div class="content-box-header">
-          <h2>Selected Information Types</h2>
-        </div>
-        <div id="selected-information-types">
-          <!-- Selected information types will be added dynamically here -->
-        </div>
+      <div class="column">
+        <input id="information-type-input" list="information-types" type="text">
+        <datalist id="information-types">
+          <!-- Add known information types here -->
+        </datalist>
+        <button id="search-button" class="rounded-button">Search</button>
       </div>
+    </div>
+    <hr class="light-gray-divider">
+    <div class="content-box-header">
+      <h2>Selected Information Types</h2>
+    </div>
+    <div id="selected-information-types">
+      <!-- Selected information types will be added dynamically here -->
     </div>
     <div class="button-container">
       <button id="saveButton" class="rounded-button save-button">Save</button>
