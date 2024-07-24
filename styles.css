@@ -189,25 +189,12 @@ header {
 .two-column-layout {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  height: calc(100vh - 200px); /* Adjust based on your layout */
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .column {
   flex: 1;
-}
-
-.left-column {
-  position: sticky;
-  top: 20px; /* Adjust as needed */
-  align-self: flex-start;
-  max-height: calc(100vh - 220px); /* Adjust based on your layout */
-}
-
-.right-column {
-  overflow-y: auto;
-  max-height: calc(100vh - 220px); /* Adjust based on your layout */
 }
 
 .required-icon {
@@ -225,11 +212,9 @@ h1, h2 {
 }
 
 .button-container {
-  position: sticky;
-  bottom: 20px;
-  background-color: #fff;
-  padding-top: 20px;
-  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .rounded-button {
@@ -245,10 +230,6 @@ h1, h2 {
 .save-button {
   background-color: #4CAF50;
   color: white;
-}
-
-#search-button {
-  width: 80px;
 }
 
 .save-button:hover {
@@ -287,13 +268,10 @@ h1, h2 {
   margin-bottom: 10px;
 }
 
-#selected-information-types {
-  overflow-y: auto;
-}
-
 #information-type-input {
-  width: calc(100% - 90px);
-  margin-bottom: 10px;
+  width: calc(100% - 100px);
+  padding: 5px;
+  margin-right: 10px;
 }
 
 #search-button {
