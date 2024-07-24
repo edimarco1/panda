@@ -148,36 +148,25 @@ header {
 
 .content {
   display: flex;
-  flex-wrap: wrap;
   margin-left: 220px; /* Adjust based on the width of your left menu */
-  margin-top: 20px; /* Add space below the sub-menu */
+  margin-top: 20px;
   padding: 20px;
   background-color: #e8f0f8;
-  min-height: calc(100vh - 150px);
 }
 
-.content-box.main-content {
-  flex: 1 1 100%;
-  order: -1; /* This moves the main content to the beginning of the flex container */
-  margin-bottom: 50px; /* Add space below the main content */
+.content-box {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .content-box.tertiary-menu {
-  flex: 0 0 200px; /* Adjust width as needed */
+  width: 200px;
   margin-right: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  .content {
-    margin-left: 0;
-    flex-direction: column;
-  }
-  
-  .content-box {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
+.content-box.main-content {
+  flex-grow: 1;
 }
 
 .light-gray-divider {
