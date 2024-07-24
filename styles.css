@@ -244,3 +244,26 @@ h1, h2 {
 .cancel-button:hover {
   background-color: #da190b;
 }
+
+.information-type-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.information-type-item h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.information-type-item label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.information-type-item select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
