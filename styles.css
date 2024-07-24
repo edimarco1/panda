@@ -267,3 +267,13 @@ h1, h2 {
   padding: 5px;
   margin-bottom: 10px;
 }
+
+#information-type-input {
+  width: calc(100% - 100px);
+  padding: 5px;
+  margin-right: 10px;
+}
+
+#search-button {
+  width: 80px;
+}
