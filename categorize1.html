@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Basic Website Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="logo"> <a href="#"><img src="eMASS%20Simulator2.png" alt="Logo"></a>
+      </div>
+      <nav class="top-nav" style="height: 57px;">
+        <ul>
+          <li class="dropdown" style="height: 54px;"> <a href="#">Home</a>
+            <div class="dropdown-content"> Home Workload Notifications </div>
+          </li>
+          <li class="dropdown" style="height: 31px; margin-top: 11px;"> <a href="#">Authorization</a>
+            <div class="dropdown-content"> Sample Authorization 1 Sample
+              Authorization 2 Sample Authorization 3 </div>
+          </li>
+          <li class="dropdown"> <a href="#">Reports</a>
+            <div class="dropdown-content"> <span class="dropdown-item" style="color: #333;">Sample
+                Report 1</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 2</span> <span class="dropdown-item" style="color: #333;">Sample
+                Report 3</span> </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="sub-menu" style="top: 94px; height: 19px; left: -6px; width: 1745px;">
+      <p class="sub-menu-text">Hello, Welcome to eMASS Simulator.</p>
+    </div>
+    <div class="left-menu" style="top: 130px; height: 789px; left: 0px;">
+      <ul>
+        <li><a href="#">System Details</a></li>
+        <li><span style="color: #333333;">&nbsp;Dashboard</span></li>
+        <li><a href="categorization.html"><span style="color: #333333;">Categorization</span></a></li>
+        <li><span style=" color: #333333;">&nbsp;Controls</span></li>
+        <li><span style="  color: #333333;">&nbsp;Assets<br>
+          </span></li>
+        <li><a href="#blank" target="_top">Knowledge-base</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="content-box left">
+        <div class="content-box-header">
+          <h3>Search</h3>
+        </div>
+        <div> <input id="information-type-input" list="information-types" type="text">
+          <datalist id="information-types">
+            <!-- Add known information types here --> </datalist> <button id="search-button">Search</button>
+        </div>
+      </div>
+      <div class="content-box right">
+        <div class="content-box-header">
+          <h3>Selected Information Types</h3>
+        </div>
+        <div id="selected-information-types">
+          <!-- Selected information types will be added dynamically here --> </div>
+        <div class="save-cancel-buttons"> <button id="save-button">Save</button>
+          <button id="cancel-button">Cancel</button> </div>
+      </div>
+    </div>
+    <script>
+    // Known information types array
+    const knownInformationTypes = [
+      'Privacy',
+      'Strategic National & Theater Defense',
+      'Operational Defense',
+      'Tactical Defense',
+      'Border and Transportation Security',
+      'Key Asset and Critical Infrastructure Protection',
+      'Catastrophic Defense',
+      'Executive Functions of the Executive Office of the President (EOP)',
+      'Intelligence Planning',
+      'Intelligence Collection',
+      'Intelligence Analysis & Production',
+      'Intelligence Dissemination',
+      'Intelligence Processing',
+      'Disaster Monitoring and Prediction',
+      'Disaster Preparedness and Planning',
+      'Disaster Repair and Restoration',
+      'Emergency Response',
+      'Foreign Affairs',
+      'International Development and Humanitarian Aid',
+      'Global Trade',
+      'Water Resource Management',
+      'Conservation, Marine and Land Management',
+      'Recreational Resource Management and Tourism',
+      'Agricultural Innovation and Services',
+      'Energy Supply',
+      'Energy Conservation and Preparedness',
+      'Energy Resource Management',
+      'Energy Production',
+      'Environmental Monitoring and Forecasting',
+      'Environmental Remediation',
+      'Pollution Prevention and Control',
+      'Business and Industry Development',
+      'Intellectual Property Protection',
+      'Financial Sector Oversight',
+      'Industry Sector Income Stabilization',
+      'Homeownership Promotion',
+      'Community and Regional Development',
+      'Social Services',
+      'Postal Services',
+      'Ground Transportation',
+      'Water Transportation',
+      'Air Transportation',
+      'Space Operations',
+      'Elementary, Secondary, and Vocational Education',
+      'Higher Education',
+      'Cultural and Historic Preservation',
+      'Cultural and Historic Exhibition',
+      'Training and Employment',
+      'Labor Rights Management',
+      'Worker Safety',
+      'Access to Care',
+      'Population Health Mgmt & Consumer Safety',
+      'Health Care Administration',
+      'Health Care Delivery Services',
+      'Health Care Research and Practitioner Education',
+      'General Retirement and Disability',
+      'Unemployment Compensation',
+      'Housing Assistance',
+      'Food and Nutrition Assistance',
+      'Survivor Compensation',
+      'Criminal Apprehension',
+      'Criminal Investigation and Surveillance',
+      'Citizen Protection',
+      'Leadership Protection',
+      'Property Protection',
+      'Substance Control',
+      'Crime Prevention',
+      'Trade Law Enforcement',
+      'Judicial Hearings',
+      'Legal Defense',
+      'Legal Investigation',
+      'Legal Prosecution and Litigation',
+      'Resolution Facilitation',
+      'Criminal Incarceration',
+      'Criminal Rehabilitation',
+      'Scientific and Technological Research and Innovation',
+      'Space Exploration and Innovation',
+      'Research and Development',
+      'General Purpose Data and Statistics',
+      'Advising and Consulting',
+      'Knowledge Dissemination',
+      'Inspections and Auditing',
+      'Standards Setting/Reporting Guideline Development',
+      'Permits and Licensing',
+      'Manufacturing',
+      'Construction',
+      'Public Resources, Facility and Infrastructure Management',
+      'Information Infrastructure Management',
+      'Federal Grants (Non-State)',
+      'Direct Transfers to Individuals',
+      'Subsidies',
+      'Tax Credits',
+      'Direct Loans',
+      'Loan Guarantees',
+      'General Insurance',
+      'Governments',
+      'Formula Grants',
+      'Project/Competitive Grants',
+      'Earmarked Grants',
+      'State Loans',
+      'Military Operations',
+      'Civilian Operations',
+      'Corrective Action (Policy/Regulation)',
+      'Program Evaluation',
+      'Program Monitoring',
+      'Policy & Guidance Development',
+      'Public Comment Tracking',
+      'Regulatory Creation',
+      'Rule Publication',
+      'Budget Formulation',
+      'Capital Planning',
+      'Enterprise Architecture',
+      'Strategic Planning',
+      'Budget Execution',
+      'Workforce Planning',
+      'Management Improvement',
+      'Budgeting & Performance Integration',
+      'Tax & Fiscal Policy',
+      'Contingency Planning',
+      'Continuity of Operations',
+      'Service Recovery',
+      'Debt Collection',
+      'User Fee Collection',
+      'Federal Asset Sales',
+      'Customer Services',
+      'Official Information Dissemination',
+      'Product Outreach',
+      'Public Relations',
+      'Legislation Tracking',
+      'Legislation Testimony',
+      'Proposal Development',
+      'Congressional Liaison Operations',
+      'Central Fiscal Operations',
+      'Legislative Functions',
+      'Executive Functions',
+      'Central Property Management',
+      'Central Personnel Management',
+      'Taxation Management',
+      'Central Records & Statistics Management',
+      'Income Information',
+      'Personal Identity and Authentication',
+      'Entitlement Event Information',
+      'Representative Payee Information',
+      'General Information',
+      'Facilities, Fleet, and Equipment Management',
+      'Help Desk Services',
+      'Security Management',
+      'Travel',
+      'Workplace Policy Development & Management',
+      'Accounting',
+      'Funds Control',
+      'Payments',
+      'Collections and Receivables',
+      'Asset and Liability Management',
+      'Reporting and Information',
+      'Cost Accounting/ Performance Measurement',
+      'HR Strategy',
+      'Staff Acquisition',
+      'Organization & Position Mgmt',
+      'Compensation Management',
+      'Benefits Management',
+      'Employee Performance Mgmt',
+      'Employee Relations',
+      'Labor Relations',
+      'Separation Management',
+      'Human Resources Development',
+      'Goods Acquisition',
+      'Inventory Control',
+      'Logistics Management',
+      'Services Acquisition',
+      'System Development',
+      'Lifecycle/Change Management',
+      'System Maintenance',
+      'IT Infrastructure Maintenance',
+      'Information Security',
+      'Record Retention',
+      'Information Management',
+      'System and Network Monitoring',
+      'Information Sharing'
+    ];
+
+    const informationTypeInput = document.getElementById("information-type-input");
+    const searchButton = document.getElementById("search-button");
+    const selectedInformationTypes = document.getElementById("selected-information-types");
+    const saveButton = document.getElementById("save-button");
+
+    // Event listener for search button
+    searchButton.addEventListener("click", () => {
+      const inputText = informationTypeInput.value.trim();
+
+      if (inputText && knownInformationTypes.includes(inputText)) {
+        addInformationType(inputText);
+        informationTypeInput.value = "";
+      } else {
+        alert("Please enter a valid known information type.");
+      }
+    });
+
+    // Event listener for Enter key press on input field
+    informationTypeInput.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        searchButton.click();
+      }
+    });
+
+    // Function to add information type to selected list
+    function addInformationType(type) {
+      const informationTypeItem = document.createElement("div");
+      informationTypeItem.classList.add("information-type-item");
+
+      const title = document.createElement("h4");
+      title.textContent = type;
+      informationTypeItem.appendChild(title);
+
+      const confidentialityDropdown = createDropdown("Confidentiality");
+      const integrityDropdown = createDropdown("Integrity");
+      const availabilityDropdown = createDropdown("Availability");
+
+      informationTypeItem.appendChild(confidentialityDropdown);
+      informationTypeItem.appendChild(integrityDropdown);
+      informationTypeItem.appendChild(availabilityDropdown);
+
+      selectedInformationTypes.appendChild(informationTypeItem);
+    }
+
+    // Function to create dropdown element
+    function createDropdown(label) {
+      const dropdown = document.createElement("select");
+      dropdown.name = label.toLowerCase();
+      dropdown.classList.add("dropdown");
+
+      const options = ["Low", "Moderate", "High"];
+
+      options.forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option;
+        optionElement.textContent = option;
+        dropdown.appendChild(optionElement);
+      });
+
+      const labelElement = document.createElement("label");
+      labelElement.textContent = label;
+      labelElement.appendChild(dropdown);
+
+      return labelElement;
+    }
+
+
+    // Function to generate a unique key
+    function generateUniqueKey() {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+      
+    // Event listener for save button
+    saveButton.addEventListener("click", () => {
+      const timestamp = new Date().toISOString();
+      const uniqueKey = generateUniqueKey();
+      const successValue = "success";
+
+      const requestData = {
+        key: uniqueKey,
+        timestamp: timestamp,
+        status: successValue
+      };
+      
+  // Make an API POST request to the Appian API
+  fetch("https://api.example.com/save-data", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestData)
+  })
+    .then(response => {
+      if (response.ok) {
+        alert("Save Completed!");
+      } else {
+        throw new Error("Error saving data. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
+
+
+    // Populate known information types in datalist
+    const informationTypesDatalist = document.getElementById("information-types");
+
+    knownInformationTypes.forEach((type) => {
+      const option = document.createElement("option");
+      option.value = type;
+      informationTypesDatalist.appendChild(option);
+    });
+  </script>
+  </body>
+</html>
